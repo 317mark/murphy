@@ -1,43 +1,45 @@
 class Rocket():
-  """
-  A simple rocket class. The pointy end goes up ^^^
-  """
+    """
+    A simple rocket class. The pointy end goes up ^^^
+    """
 
-  def _init_(self, name, desc, owner, stages, launches, status, acceleration, velocity, orientation, altitude):
-    self.name = name
-    self.desc = desc
-    self.owner = owner
-    self.stages = stages
-    self.launches = launches
-    self.status = status
-    self.acceleration = acceleration
-    # self.accelX = accelX
-    # self.accelY = accelY
-    # self.accelZ = accelZ
-    self.velocity = velocity
-    self.orientation = orientation
-    self.altitude = altitude
+    def __init__(self, name, desc, owner, stages, launches, status="Inert", acceleration=0, velocity=0, orientation=0, altitude=0):
+        self.name = name
+        self.desc = desc
+        self.owner = owner
+        self.stages = stages
+        self.launches = launches
+        self.status = status
+        self.acceleration = acceleration
+        # self.accelX = accelX
+        # self.accelY = accelY
+        # self.accelZ = accelZ
+        self.velocity = velocity
+        self.orientation = orientation
+        self.altitude = altitude
 
-    
-  def arm():
-  # Arms the rocket for launch
+    def arm(self):
+        # Desc - Arms the rocket for launch
 
-    # Arm the rocket
+        # Arm the rocket
+        self.status = "Armed"
+        # Change rocket status to "Armed" and alert owner of status change
+        print("Rocket is " + self.status)
 
-    # Change rocket status to "Armed" and alert owner of status change
-    print("Rocket is armed")
+    def launch(self):
+        # Desc - Launches the rocket
 
-  def launch():
-  # Launches the rocket
+        # Fire electrical charge inside the motor chamber
 
-    # Fire electrical charge inside the motor chamber
+        # Capture date and time of launch
 
-    # Capture date and time of launch
-    
-    # Change rocket status to "Flying" and alert owner of status change
+        # Change rocket status to "Flying" and alert owner of status change
+        print("Rocket has launched!")
 
-    # Increment launches by 1
+        # Increment launches by 1
+        self.launches = self.launches + 1
 
-    
-  def set_acceleration():
-  # Sets the rocket's current acceleration
+    def set_acceleration(self):
+        # Desc - Sets the rocket's current acceleration... not sure if this is a valuable method yet.
+        print("Acceleration set to " + self.acceleration)
+        self.acceleration = 1
