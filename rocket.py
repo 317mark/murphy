@@ -1,14 +1,12 @@
-class Rocket():
+class Rocket:
     """
     A simple rocket class. The pointy end goes up ^^^
     """
 
-    def __init__(self, name, desc, owner, stages, launches, status="Inert", acceleration=0, velocity=0, orientation=0, altitude=0):
+    def __init__(self, name, owner, stages, status="Inert", acceleration=0, velocity=0, orientation=0, altitude=0):
         self.name = name
-        self.desc = desc
         self.owner = owner
         self.stages = stages
-        self.launches = launches
         self.status = status
         self.acceleration = acceleration
         # self.accelX = accelX
@@ -35,9 +33,6 @@ class Rocket():
 
         # Change rocket status to "Flying" and alert owner of status change
         print("Rocket has launched!")
-
-        # Increment launches by 1
-        self.launches = self.launches + 1
 
     def set_acceleration(self):
         # Desc - Sets the rocket's current acceleration... not sure if this is a valuable method yet.

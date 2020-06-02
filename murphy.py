@@ -1,12 +1,9 @@
-import rocket_class
+from rocket import Rocket
 
-rocket = Rocket("Murphy", "My first attempt at a big-boy rocket",
-                "Mark Williams", 1, 0)
+rocket = Rocket('Murphy', 'Mark Williams', 1, 'inert')
 
 print("This rocket is called " + rocket.name +
       ", and is owned by " + rocket.owner)
 
 rocket.arm()
 rocket.launch()
-
-print(rocket.launches)
