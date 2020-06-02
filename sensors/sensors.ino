@@ -22,6 +22,9 @@ Adafruit_BNO055 bno = Adafruit_BNO055(55);
 #include "ADXL335.h"
 ADXL335 accelerometer;
 
+const int buttonPin = 13;
+int buttonState = HIGH;
+
 void setup()
 {
   // put your setup code here, to run once:
@@ -30,28 +33,32 @@ void setup()
   bmp.begin();
   accelerometer.begin();
   bno.begin();
+
+  pinMode(buttonPin, INPUT);
 }
 
 void loop()
 {
-  // put your main code here, to run repeatedly:
+  buttonState = digitalRead(buttonPin);
 
-  sensors_event_t event;
-  bno.getEvent(&event);
-
-  /* Display the floating point data */
-  Serial.print("X: ");
-  Serial.print(event.orientation.x, 4);
-  Serial.print(" Y: ");
-  Serial.print(event.orientation.y, 4);
-  Serial.print(" Z: ");
-  Serial.print(event.orientation.z, 4);
-  Serial.print("\tTemp: ");
-  Serial.print(bmp.readTemperature() * 1.8 + 32);
-  Serial.print(" F");
-  Serial.print("\tAltitude: ");
-  Serial.print(bmp.readAltitude(1013.25) * 3.208084);
-  Serial.println(" ft");
-
-  delay(100);
+  if (buttonState == LOW) {
+    sensors_event_t event;
+    bno.getEvent(&event);
+  
+    /* Display the floating point data */
+    Serial.print("X: ");
+    Serial.print(event.orientation.x, 4);
+    Serial.print(" Y: ");
+    Serial.print(event.orientation.y, 4);
+    Serial.print(" Z: ");
+    Serial.print(event.orientation.z, 4);
+    Serial.print("\tTemp: ");
+    Serial.print(bmp.readTemperature() * 1.8 + 32);
+    Serial.print(" F");
+    Serial.print("\tAltitude: ");
+    Serial.print(bmp.readAltitude(1013.25) * 3.208084);
+    Serial.println(" ft");
+  
+    delay(100);
+  }
 }
