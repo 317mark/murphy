@@ -41,11 +41,10 @@ void loop()
 {
   buttonState = digitalRead(buttonPin);
 
-  if (buttonState == LOW)
-  {
+  if (buttonState == LOW) {
     sensors_event_t event;
     bno.getEvent(&event);
-
+  
     /* Display the floating point data */
     Serial.print("X: ");
     Serial.print(event.orientation.x, 4);
@@ -59,7 +58,7 @@ void loop()
     Serial.print("\tAltitude: ");
     Serial.print(bmp.readAltitude(1013.25) * 3.208084);
     Serial.println(" ft");
-
+  
     delay(100);
   }
 }
