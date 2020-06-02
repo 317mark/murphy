@@ -41,6 +41,7 @@ Thumbs.db
 *.vscode
 *.idea
 *.pyc
+*.xml
 
 # Project Assets #
 ######################
