@@ -6,4 +6,5 @@ print("This rocket is called " + rocket.name +
       ", and is owned by " + rocket.owner)
 
 rocket.arm()
+rocket.disarm()
 rocket.launch()

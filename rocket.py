@@ -3,38 +3,34 @@ class Rocket:
     A simple rocket class. The pointy end goes up ^^^
     """
 
-    def __init__(self, name, owner, stages, status="Inert", acceleration=0, velocity=0, orientation=0, altitude=0):
+    def __init__(self, name, owner, stages, status="Idle", accelX=0, accelY=0, accelZ=0, velocity=0, gyroX=0, gyroY=0, gyroZ=0, altitude=0):
         self.name = name
         self.owner = owner
         self.stages = stages
         self.status = status
-        self.acceleration = acceleration
-        # self.accelX = accelX
-        # self.accelY = accelY
-        # self.accelZ = accelZ
+        self.accelX = accelX
+        self.accelY = accelY
+        self.accelZ = accelZ
         self.velocity = velocity
-        self.orientation = orientation
+        self.gyroX = gyroX
+        self.gyroY = gyroY
+        self.gyroZ = gyroZ
         self.altitude = altitude
 
     def arm(self):
-        # Desc - Arms the rocket for launch
+        # Arms the rocket for launch
+        self.status = 'Armed'
+        print(self.status)
+        print(self.name + ' has been armed')
 
-        # Arm the rocket
-        self.status = "Armed"
-        # Change rocket status to "Armed" and alert owner of status change
-        print("Rocket is " + self.status)
+    def disarm(self):
+        # Disarms the rocket
+        self.status = 'Idle'
+        print(self.status)
+        print(self.name + ' has been disarmed')
 
     def launch(self):
-        # Desc - Launches the rocket
-
-        # Fire electrical charge inside the motor chamber
-
-        # Capture date and time of launch
-
-        # Change rocket status to "Flying" and alert owner of status change
-        print("Rocket has launched!")
-
-    def set_acceleration(self):
-        # Desc - Sets the rocket's current acceleration... not sure if this is a valuable method yet.
-        print("Acceleration set to " + self.acceleration)
-        self.acceleration = 1
+        # Launches the rocket
+        self.status = 'Going Up'
+        print(self.status)
+        print(self.name + ' has launched')
