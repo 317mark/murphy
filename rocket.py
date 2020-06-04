@@ -3,10 +3,9 @@ class Rocket:
     A simple rocket class. The pointy end goes up ^^^
     """
 
-    def __init__(self, name, owner, stages, status="Idle", accelX=0, accelY=0, accelZ=0, velocity=0, gyroX=0, gyroY=0, gyroZ=0, altitude=0):
+    def __init__(self, name, owner, status="Idle", accelX=0, accelY=0, accelZ=0, velocity=0, gyroX=0, gyroY=0, gyroZ=0, altitude=0):
         self.name = name
         self.owner = owner
-        self.stages = stages
         self.status = status
         self.accelX = accelX
         self.accelY = accelY
