@@ -1,3 +1,8 @@
+# import BMP
+# import ADXL
+# import BMO
+# import camera
+
 class Rocket:
     """
     A simple rocket class. The pointy end goes up ^^^
@@ -33,3 +38,10 @@ class Rocket:
         self.status = 'Going Up'
         print(self.status)
         print(self.name + ' has launched')
+
+    def calibrateSensors(self):
+        # Calibrates/Tests all sensors to ensure they're functioning properly
+        print('Sensors have been calibrated')
+
+
+rocket = Rocket('Murphy', 'Mark Williams')

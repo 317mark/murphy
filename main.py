@@ -7,10 +7,12 @@ Boot script for the rocket
 # import RPi.GPIO as GPIO
 import os
 import time
+import csv
 # import serial
 from datetime import date, datetime
 # from Sensors.Camera import camera
-from rocket import Rocket
+from rocket import rocket
+# from functions import createFlightFolder, createCSV
 
 # Set pin numbering schema
 # GPIO.setmode(GPIO.BCM)
@@ -20,23 +22,28 @@ from rocket import Rocket
 date = date.today()
 time = datetime.now()
 
-rocket = Rocket('Murphy', 'Mark Williams')
+# If battery has enough charge, continue. If not, warn user of battery life
 
-# Create new folder to store all flight data in
+# Create folder for this flight, and navigate into it
 flightName = rocket.name + '-' + \
     date.strftime('%m.%d.%y') + '-' + time.strftime('%H:%M')
-print(flightName)
 flightPath = './Flights/' + flightName
 os.mkdir(flightPath)
+os.chdir(flightPath)
 
-print('Rocket has been created - ' + rocket.name +
-      ' by ' + rocket.owner + ' - ' + flightName)
+# Create CSV file to store raw flight data
+createCSV()
+with open('rawFlightData.csv', 'w', newline='') as file:
+    writer = csv.writer(file)
+    writer.writerow(["#", "Status", "accelX", "accelY", "accelZ",
+                     "velocity", "altitude", "gyroX", "gyroY", "gyroZ"])
 
+print('Flight - ' + date.strftime('%m.%d.%y') + ' ' + time.strftime('%H:%M'))
 
 # Connect to Arduino #
 ###############################
 
-# ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
+ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
 # can arduino be a class? arduino.connect(path, baud, timeout)
 
 # while 1:
@@ -45,7 +52,7 @@ print('Rocket has been created - ' + rocket.name +
 #     parsed = [x.rstrip() for x in parsed]
 #     if(len(parsed) > 2):
 #         print(parsed)
-
+print('Connected with Arduino')
 
 # Connect to Controller #
 ###############################
@@ -53,12 +60,14 @@ print('Rocket has been created - ' + rocket.name +
 
 # Sensors #
 ###############################
+# rocket.calibrateSensors()
 
 # Turn on the camera
-camera.start_preview()
-time.sleep(2)  # gives the camera a couple seconds to get it's bearings
+# camera.start_preview()
+# time.sleep(2)  # gives the camera a couple seconds to get it's bearings
 
 # Calibrate BMP280
+# rocket.calibrateSensors()
 
 # Calibrate ADXL377
 
